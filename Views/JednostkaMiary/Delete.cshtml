@@ -1,0 +1,49 @@
+﻿@model Producent.Models.JednostkaMiary
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Kasowanie jednostki miary</h2>
+
+<h3>Czy chcesz skasować tę jednostkę miary?</h3>
+<p>
+
+    <table class="lista">
+        <tr>
+            <th class="naglowek-listy">
+                Pole
+            </th>
+            <th class="naglowek-listy">
+                Wartość
+            </th>
+        </tr>
+        <tr>
+            <td>
+                Kod
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Kod)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Nazwa
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Nazwa)
+            </td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+    <p>
+        <input type="submit" value="Usuń" />
+    </p>
+    <p>
+        @Html.ActionLink("Powrót do listy", "Index", null, new { @class = "link_zwykly" })
+    </p>
+}

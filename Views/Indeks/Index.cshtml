@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Producent.Models.Indeks>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Indeksy</h2>
+
+<p>
+    @Html.ActionLink("Dodaj", "Create", "Indeks", null, new { @class = "link_zwykly" })
+</p>
+<table class="lista">
+    <tr>
+        <th class="naglowek-listy">
+            Kod
+        </th>
+        <th class="naglowek-listy">
+            Nazwa
+        </th>
+        <th  class="naglowek-listy">
+            Rodzaj
+        </th>
+        <th class="naglowek-listy">
+            Jedn. miary
+        </th>
+        <th class="naglowek-listy">
+            Cena zakupu
+        </th>
+        <th  class="naglowek-listy">
+            Cena sprzedaży
+        </th>
+        <th class="naglowek-listy">
+            Opis
+        </th>
+        <th class="naglowek-listy">
+            Liczba dni dost.
+        </th>
+        <th class="naglowek-listy">
+            Stan min
+        </th>
+        <th class="naglowek-listy">
+            Stan maks
+        </th>
+        <th class="naglowek-listy">
+            
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr class="wiersz-listy">
+    <td>
+        @item.Kod
+    </td>
+    <td>
+        @item.Nazwa
+    </td>
+    <td>
+        @item.RodzajIndeksu.Nazwa
+    </td>
+    <td>
+        @item.JednostkaMiary.Nazwa
+    </td>
+    <td>
+        @item.CenaZakupu
+    </td>
+    <td>
+        @item.CenaSprzedazy
+    </td>
+    <td>
+        @item.Opis
+    </td>
+    <td>
+        @item.LiczbaDniDostawy
+    </td>
+    <td>
+        @item.StanMin
+    </td>
+    <td>
+        @item.StanMax
+    </td>
+
+    <td>
+        @Html.ActionLink("Edytuj", "Edit", "Indeks", new { id = item.Id }, new { @class = "link_zwykly" }) 
+        @Html.ActionLink("Szczegóły", "Details", "Indeks", new { id = item.Id }, new { @class = "link_zwykly" }) 
+        @Html.ActionLink("Usuń", "Delete", "Indeks", new { id = item.Id }, new { @class = "link_zwykly" })
+    </td>
+</tr>
+}
+
+</table>

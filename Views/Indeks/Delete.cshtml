@@ -1,0 +1,175 @@
+﻿@model Producent.Models.Indeks
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Kasowanie indeksu</h2>
+
+<h3>Czy chcesz skasować ten indeks?</h3>
+
+<table class="lista">
+    <tr>
+        <th class="naglowek-listy">
+            Pole
+        </th>
+        <th class="naglowek-listy">
+            Wartość
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Kod
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Kod)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Nazwa
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Nazwa)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Rodzaj indeksu
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.RodzajIndeksu.Nazwa)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Jednostka miary
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.JednostkaMiary.Nazwa)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Cena zakupu
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.CenaZakupu)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Cena sprzedaży
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.CenaSprzedazy)
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Ciężar
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Ciężar)
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Czy aktywny?
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.CzyAktywny)
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Czy technologia?
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.CzyTechnologia)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Indeks dostawcy
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.IndeksDostawcy)
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Opis
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Opis)
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Opis dostawcy
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.OpisDostawcy)
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Kod kreskowy
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.KodKreskowy)
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Liczba dni dostawy
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.LiczbaDniDostawy)
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Stan min
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.StanMin)
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Stan max
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.StanMax)
+
+        </td>
+    </tr>
+
+</table>
+
+    
+
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+
+        <p>
+            <input type="submit" value="Usuń" />
+        </p>
+        <p>
+            @Html.ActionLink("Powrót do listy", "Index", "Indeks", null, new { @class = "link_zwykly" })
+        </p>  
+        
+    }
+

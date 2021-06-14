@@ -1,0 +1,203 @@
+﻿@model Producent.Models.Indeks
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Nowy indeks</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <table class="lista">
+        <tr>
+            <th class="naglowek-listy">
+                Pole
+            </th>
+            <th class="naglowek-listy">
+                Wartość
+            </th>
+        </tr>
+        <tr>
+            <td>
+                Kod
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Kod, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Kod, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Nazwa
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Nazwa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nazwa, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Rodzaj indeksu
+            </td>
+            <td>
+                @Html.DropDownList("RodzajIndeksuId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RodzajIndeksuId, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Jednostka miary
+            </td>
+            <td>
+                @Html.DropDownList("JednostkaMiaryId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.JednostkaMiaryId, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Cena zakupu
+            </td>
+            <td>
+                @Html.EditorFor(model => model.CenaZakupu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CenaZakupu, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Cena sprzedaży
+            </td>
+            <td>
+                @Html.EditorFor(model => model.CenaSprzedazy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CenaSprzedazy, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Ciężar
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Ciężar, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ciężar, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Czy aktywny?
+            </td>
+            <td>
+                @Html.EditorFor(model => model.CzyAktywny)
+                @Html.ValidationMessageFor(model => model.CzyAktywny, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Czy technologia?
+            </td>
+            <td>
+                @Html.EditorFor(model => model.CzyTechnologia)
+                @Html.ValidationMessageFor(model => model.CzyTechnologia, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Indeks dostawcy
+            </td>
+            <td>
+                @Html.EditorFor(model => model.IndeksDostawcy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IndeksDostawcy, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Opis
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Opis, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Opis, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Opis dostawcy
+            </td>
+            <td>
+                @Html.EditorFor(model => model.OpisDostawcy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OpisDostawcy, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Kod kreskowy
+            </td>
+            <td>
+                @Html.EditorFor(model => model.KodKreskowy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KodKreskowy, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Liczba dni dostawy
+            </td>
+            <td>
+                @Html.EditorFor(model => model.LiczbaDniDostawy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LiczbaDniDostawy, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Stan min
+            </td>
+            <td>
+                @Html.EditorFor(model => model.StanMin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StanMin, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Stan max
+            </td>
+            <td>
+                @Html.EditorFor(model => model.StanMax, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StanMax, "", new { @class = "text-danger" })
+
+            </td>
+        </tr>
+
+    </table>
+
+
+    <p>
+        <input type="submit" value="Utwórz" />
+    </p>          
+     
+        
+    
+}
+
+<p>
+    @Html.ActionLink("Powrót do listy", "Index", "Indeks", null, new { @class = "link_zwykly" })
+</p>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

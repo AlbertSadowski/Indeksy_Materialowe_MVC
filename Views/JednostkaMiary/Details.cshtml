@@ -1,0 +1,40 @@
+﻿@model Producent.Models.JednostkaMiary
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Szczegóły jednostki miary</h2>
+
+<table class="lista">
+    <tr>
+        <th class="naglowek-listy">
+            Pole
+        </th>
+        <th class="naglowek-listy">
+            Wartość
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Kod
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Kod)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Nazwa
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Nazwa)
+        </td>
+    </tr>
+</table>
+
+
+<p>
+    @Html.ActionLink("Edycja", "Edit", new { id = Model.Id }, new { @class = "link_zwykly" })
+    @Html.ActionLink("Powrót do listy", "Index", null, new { @class = "link_zwykly" })
+</p>

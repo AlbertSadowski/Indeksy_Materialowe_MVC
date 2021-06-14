@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Producent.Models.JednostkaMiary>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Kartoteka jednostek miary</h2>
+
+<p>
+    @Html.ActionLink("Dodaj", "Create", null, null, new { @class = "link_zwykly" })
+</p>
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th class="naglowek-listy">
+            @Html.DisplayNameFor(model => model.Kod)
+        </th>
+        <th class="naglowek-listy">
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </th>
+        <th class="naglowek-listy"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="wiersz-listy">
+        <td>
+            @Html.DisplayFor(modelItem => item.Kod)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwa)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", null, new { id=item.Id }, new { @class = "link_zwykly" }) 
+            @Html.ActionLink("Szczegóły", "Details", null, new { id=item.Id }, new { @class = "link_zwykly" }) 
+            @Html.ActionLink("Usuń", "Delete", null, new { id=item.Id }, new { @class = "link_zwykly" })
+        </td>
+    </tr>
+}
+
+</table>

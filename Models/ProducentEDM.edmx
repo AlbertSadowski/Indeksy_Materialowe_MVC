@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProducentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Indeks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="RodzajIndeksuId" Type="int" Nullable="false" />
+          <Property Name="JednostkaMiaryId" Type="int" Nullable="false" />
+          <Property Name="CenaZakupu" Type="numeric" Precision="10" Scale="4" />
+          <Property Name="CenaSprzedazy" Type="numeric" Precision="10" Scale="4" />
+          <Property Name="Ciężar" Type="numeric" Precision="10" Scale="4" />
+          <Property Name="CzyAktywny" Type="bit" />
+          <Property Name="CzyTechnologia" Type="bit" />
+          <Property Name="IndeksDostawcy" Type="varchar" MaxLength="50" />
+          <Property Name="Opis" Type="varchar" MaxLength="200" />
+          <Property Name="OpisDostawcy" Type="varchar" MaxLength="200" />
+          <Property Name="KodKreskowy" Type="varchar" MaxLength="50" />
+          <Property Name="LiczbaDniDostawy" Type="int" />
+          <Property Name="StanMin" Type="numeric" Precision="12" Scale="4" />
+          <Property Name="StanMax" Type="numeric" Precision="12" Scale="4" />
+        </EntityType>
+        <EntityType Name="JednostkaMiary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RodzajIndeksu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Indeks_To_JednostkaMiary">
+          <End Role="JednostkaMiary" Type="Self.JednostkaMiary" Multiplicity="1" />
+          <End Role="Indeks" Type="Self.Indeks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JednostkaMiary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Indeks">
+              <PropertyRef Name="JednostkaMiaryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indeks_To_RodzajIndeksu">
+          <End Role="RodzajIndeksu" Type="Self.RodzajIndeksu" Multiplicity="1" />
+          <End Role="Indeks" Type="Self.Indeks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajIndeksu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Indeks">
+              <PropertyRef Name="RodzajIndeksuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProducentModelStoreContainer">
+          <EntitySet Name="Indeks" EntityType="Self.Indeks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JednostkaMiary" EntityType="Self.JednostkaMiary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RodzajIndeksu" EntityType="Self.RodzajIndeksu" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Indeks_To_JednostkaMiary" Association="Self.FK_Indeks_To_JednostkaMiary">
+            <End Role="JednostkaMiary" EntitySet="JednostkaMiary" />
+            <End Role="Indeks" EntitySet="Indeks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indeks_To_RodzajIndeksu" Association="Self.FK_Indeks_To_RodzajIndeksu">
+            <End Role="RodzajIndeksu" EntitySet="RodzajIndeksu" />
+            <End Role="Indeks" EntitySet="Indeks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProducentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Indeks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RodzajIndeksuId" Type="Int32" Nullable="false" />
+          <Property Name="JednostkaMiaryId" Type="Int32" Nullable="false" />
+          <Property Name="CenaZakupu" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="CenaSprzedazy" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Ciężar" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="CzyAktywny" Type="Boolean" />
+          <Property Name="CzyTechnologia" Type="Boolean" />
+          <Property Name="IndeksDostawcy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Opis" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OpisDostawcy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="KodKreskowy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LiczbaDniDostawy" Type="Int32" />
+          <Property Name="StanMin" Type="Decimal" Precision="12" Scale="4" />
+          <Property Name="StanMax" Type="Decimal" Precision="12" Scale="4" />
+          <NavigationProperty Name="JednostkaMiary" Relationship="Self.FK_Indeks_To_JednostkaMiary" FromRole="Indeks" ToRole="JednostkaMiary" />
+          <NavigationProperty Name="RodzajIndeksu" Relationship="Self.FK_Indeks_To_RodzajIndeksu" FromRole="Indeks" ToRole="RodzajIndeksu" />
+        </EntityType>
+        <EntityType Name="JednostkaMiary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Indeks" Relationship="Self.FK_Indeks_To_JednostkaMiary" FromRole="JednostkaMiary" ToRole="Indeks" />
+        </EntityType>
+        <EntityType Name="RodzajIndeksu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Indeks" Relationship="Self.FK_Indeks_To_RodzajIndeksu" FromRole="RodzajIndeksu" ToRole="Indeks" />
+        </EntityType>
+        <Association Name="FK_Indeks_To_JednostkaMiary">
+          <End Role="JednostkaMiary" Type="Self.JednostkaMiary" Multiplicity="1" />
+          <End Role="Indeks" Type="Self.Indeks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JednostkaMiary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Indeks">
+              <PropertyRef Name="JednostkaMiaryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Indeks_To_RodzajIndeksu">
+          <End Role="RodzajIndeksu" Type="Self.RodzajIndeksu" Multiplicity="1" />
+          <End Role="Indeks" Type="Self.Indeks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajIndeksu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Indeks">
+              <PropertyRef Name="RodzajIndeksuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProducentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Indeks" EntityType="Self.Indeks" />
+          <EntitySet Name="JednostkaMiary" EntityType="Self.JednostkaMiary" />
+          <EntitySet Name="RodzajIndeksu" EntityType="Self.RodzajIndeksu" />
+          <AssociationSet Name="FK_Indeks_To_JednostkaMiary" Association="Self.FK_Indeks_To_JednostkaMiary">
+            <End Role="JednostkaMiary" EntitySet="JednostkaMiary" />
+            <End Role="Indeks" EntitySet="Indeks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Indeks_To_RodzajIndeksu" Association="Self.FK_Indeks_To_RodzajIndeksu">
+            <End Role="RodzajIndeksu" EntitySet="RodzajIndeksu" />
+            <End Role="Indeks" EntitySet="Indeks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProducentModelStoreContainer" CdmEntityContainer="ProducentEntities">
+          <EntitySetMapping Name="Indeks">
+            <EntityTypeMapping TypeName="ProducentModel.Indeks">
+              <MappingFragment StoreEntitySet="Indeks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="RodzajIndeksuId" ColumnName="RodzajIndeksuId" />
+                <ScalarProperty Name="JednostkaMiaryId" ColumnName="JednostkaMiaryId" />
+                <ScalarProperty Name="CenaZakupu" ColumnName="CenaZakupu" />
+                <ScalarProperty Name="CenaSprzedazy" ColumnName="CenaSprzedazy" />
+                <ScalarProperty Name="Ciężar" ColumnName="Ciężar" />
+                <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+                <ScalarProperty Name="CzyTechnologia" ColumnName="CzyTechnologia" />
+                <ScalarProperty Name="IndeksDostawcy" ColumnName="IndeksDostawcy" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="OpisDostawcy" ColumnName="OpisDostawcy" />
+                <ScalarProperty Name="KodKreskowy" ColumnName="KodKreskowy" />
+                <ScalarProperty Name="LiczbaDniDostawy" ColumnName="LiczbaDniDostawy" />
+                <ScalarProperty Name="StanMin" ColumnName="StanMin" />
+                <ScalarProperty Name="StanMax" ColumnName="StanMax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JednostkaMiary">
+            <EntityTypeMapping TypeName="ProducentModel.JednostkaMiary">
+              <MappingFragment StoreEntitySet="JednostkaMiary">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RodzajIndeksu">
+            <EntityTypeMapping TypeName="ProducentModel.RodzajIndeksu">
+              <MappingFragment StoreEntitySet="RodzajIndeksu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

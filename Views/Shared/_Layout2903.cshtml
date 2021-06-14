@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Producent</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    
+
+</head>
+<body>
+    <div class="naglowek-Producent">
+        Producent
+    </div>
+    <div class="pod-naglowek-Producent">
+        Dedykowane systemy dla produkcji
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Producent  
+            </p>
+            <p>
+            @Html.ActionLink("Strona główna", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Producent</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <div class="naglowek-Producent">
+                    Producent
+                </div>
+                <div class="pod-naglowek-Producent">
+                    Dedykowane systemy dla produkcji
+                </div>
+            </td>
+            
+        </tr>
+    </table>
+
+    <table class="menu-glowne" >
+        <tr>
+            <td>
+                
+                    <a class="opcja_MG" href="/home/index">Strona główna</a>
+                    <a class="opcja_MG" href="/home/index">Technologie (nie działa)</a>
+                    <a class="opcja_MG" href="/home/index">Zlecenia (nie działa)</a>
+                    <a class="opcja_MG" href="/Kartoteki/index">Kartoteki</a>
+
+                
+            </td>
+        </tr>
+    </table>
+   
+
+
+  
+
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>
+                &copy; @DateTime.Now.Year - Producent
+            </p>
+            <p>
+               @* @Html.ActionLink("Strona główna", "Index", "Home", new { area = "" }, new { @class = "link_zwykly" })*@
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>

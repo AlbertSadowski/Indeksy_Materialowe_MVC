@@ -1,0 +1,63 @@
+﻿@model Producent.Models.JednostkaMiary
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Utwórz jednostkę miary</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <table class="lista">
+        <tr>
+            <th class="naglowek-listy">
+                Pole
+            </th>
+            <th class="naglowek-listy">
+                Wartość
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                Kod
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Kod)
+                @Html.ValidationMessageFor(model => model.Kod)
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Nazwa
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Nazwa)
+                @Html.ValidationMessageFor(model => model.Nazwa)
+
+            </td>
+        </tr>
+
+
+    </table>
+    <p>
+        <input type="submit" value="Utwórz" />
+    </p>
+
+}
+
+<p>
+    @Html.ActionLink("Powrót do listy", "Index", null, new { @class = "link_zwykly" })
+</p>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
